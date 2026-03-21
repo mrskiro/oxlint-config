@@ -3,10 +3,20 @@
   "version": "0.1.0",
   "description": "Shared oxlint configuration",
   "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./base": "./src/base.ts",
+    "./react": "./src/react.ts",
+    "./next": "./src/next.ts",
+    "./vitest": "./src/vitest.ts"
+  },
   "files": [
-    "base.json",
-    "react.json",
-    "next.json",
-    "vitest.json"
-  ]
+    "src"
+  ],
+  "peerDependencies": {
+    "oxlint": ">=1.42.0"
+  },
+  "devDependencies": {
+    "oxlint": "^1.56.0"
+  }
 }

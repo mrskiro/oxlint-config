@@ -1,4 +1,0 @@
-{
-  "extends": ["./react.json"],
-  "plugins": ["nextjs", "react-perf"]
-}
