@@ -1,0 +1,12 @@
+{
+  "name": "@mrskiro/oxlint-config",
+  "version": "0.1.0",
+  "description": "Shared oxlint configuration",
+  "license": "MIT",
+  "files": [
+    "base.json",
+    "react.json",
+    "next.json",
+    "vitest.json"
+  ]
+}

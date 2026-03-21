@@ -1,0 +1,6 @@
+{
+  "plugins": ["vitest"],
+  "rules": {
+    "vitest/consistent-test-it": ["error", { "fn": "it", "withinDescribe": "it" }]
+  }
+}
