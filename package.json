@@ -13,6 +13,9 @@
   "files": [
     "src"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "oxlint": ">=1.42.0"
   },
