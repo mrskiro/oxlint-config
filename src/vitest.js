@@ -1,8 +1,6 @@
-import { defineConfig } from "oxlint"
-
-export default defineConfig({
+export default {
   plugins: ["vitest"],
   rules: {
     "vitest/consistent-test-it": ["error", { fn: "it", withinDescribe: "it" }],
   },
-})
+}

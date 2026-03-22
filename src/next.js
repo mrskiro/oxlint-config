@@ -1,10 +1,9 @@
-import { defineConfig } from "oxlint"
-import react from "./react.ts"
+import react from "./react.js"
 
-export default defineConfig({
+export default {
   ...react,
   plugins: [...react.plugins, "nextjs", "react-perf"],
   rules: {
     ...react.rules,
   },
-})
+}

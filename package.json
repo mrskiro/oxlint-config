@@ -1,15 +1,15 @@
 {
   "name": "@mrskiro/oxlint-config",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "packageManager": "pnpm@10.30.3",
   "description": "Shared oxlint configuration",
   "license": "MIT",
   "type": "module",
   "exports": {
-    "./base": "./src/base.ts",
-    "./react": "./src/react.ts",
-    "./next": "./src/next.ts",
-    "./vitest": "./src/vitest.ts"
+    "./base": "./src/base.js",
+    "./react": "./src/react.js",
+    "./next": "./src/next.js",
+    "./vitest": "./src/vitest.js"
   },
   "files": [
     "src"
