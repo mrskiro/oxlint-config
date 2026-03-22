@@ -49,6 +49,17 @@ import { defineConfig } from "oxlint";
 export default defineConfig(react);
 ```
 
+## Release
+
+1. Update `version` in `package.json`
+2. Commit, tag, and push:
+
+```sh
+git add package.json && git commit -m "vX.Y.Z" && git tag vX.Y.Z && git push origin main --tags
+```
+
+GitHub Actions will automatically publish to npm.
+
 ## License
 
 MIT
