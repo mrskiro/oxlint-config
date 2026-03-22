@@ -1,6 +1,6 @@
 {
   "name": "@mrskiro/oxlint-config",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "packageManager": "pnpm@10.30.3",
   "description": "Shared oxlint configuration",
   "license": "MIT",
@@ -9,7 +9,8 @@
     "./base": "./src/base.js",
     "./react": "./src/react.js",
     "./next": "./src/next.js",
-    "./vitest": "./src/vitest.js"
+    "./vitest": "./src/vitest.js",
+    "./plugin": "./src/plugin.mjs"
   },
   "files": [
     "src"
