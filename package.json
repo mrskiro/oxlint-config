@@ -1,6 +1,6 @@
 {
   "name": "@mrskiro/oxlint-config",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "packageManager": "pnpm@10.30.3",
   "description": "Shared oxlint configuration",
   "license": "MIT",

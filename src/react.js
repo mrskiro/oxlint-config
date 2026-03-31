@@ -9,9 +9,11 @@ export default {
       specifier: "@mrskiro/oxlint-config/plugin",
     },
   ],
+  overrides: [...(base.overrides ?? [])],
   rules: {
     ...base.rules,
     "@mrskiro/oxlint-rules/no-use-effect": "error",
     "@mrskiro/oxlint-rules/no-use-ref": "error",
+    "@mrskiro/oxlint-rules/no-tailwind-arbitrary-value": "error",
   },
 }

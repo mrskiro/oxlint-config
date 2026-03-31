@@ -6,4 +6,21 @@ export default {
   rules: {
     ...react.rules,
   },
+  overrides: [
+    ...(react.overrides ?? []),
+    {
+      files: [
+        "**/page.tsx",
+        "**/layout.tsx",
+        "**/loading.tsx",
+        "**/error.tsx",
+        "**/not-found.tsx",
+        "**/sitemap.ts",
+        "**/middleware.ts",
+      ],
+      rules: {
+        "import/no-default-export": "off",
+      },
+    },
+  ],
 }
