@@ -30,9 +30,73 @@ const noUseRef = {
   },
 };
 
+const VARIANT_PREFIXES = ["data", "group", "peer", "aria", "has", "not"];
+
+const noTailwindArbitraryValue = {
+  create(context) {
+    const isVariantPattern = (prefix) =>
+      VARIANT_PREFIXES.some((v) => prefix === v || prefix.endsWith("-" + v));
+
+    const checkValue = (node, value) => {
+      const re = /([\w-]+)-\[([^\]]+)\]/g;
+      let match;
+      while ((match = re.exec(value)) !== null) {
+        if (isVariantPattern(match[1])) continue;
+        context.report({
+          node,
+          message: `Tailwind arbitrary value '${match[0]}' is not allowed. Use standard utility classes instead.`,
+        });
+      }
+    };
+
+    return {
+      JSXAttribute(node) {
+        const name = node.name?.name;
+        if (name !== "className" && name !== "class") return;
+
+        if (node.value?.type === "Literal" && typeof node.value.value === "string") {
+          checkValue(node.value, node.value.value);
+        }
+      },
+      CallExpression(node) {
+        const callee = node.callee;
+        const name = callee.type === "Identifier" ? callee.name : null;
+        if (name !== "cn" && name !== "clsx" && name !== "twMerge") return;
+
+        for (const arg of node.arguments) {
+          if (arg.type === "Literal" && typeof arg.value === "string") {
+            checkValue(arg, arg.value);
+          }
+          if (arg.type === "TemplateLiteral") {
+            for (const quasi of arg.quasis) {
+              checkValue(arg, quasi.value.raw);
+            }
+          }
+        }
+      },
+      TemplateLiteral(node) {
+        const parent = node.parent;
+        if (
+          parent?.type === "JSXExpressionContainer" &&
+          parent.parent?.type === "JSXAttribute" &&
+          (parent.parent.name?.name === "className" || parent.parent.name?.name === "class")
+        ) {
+          for (const quasi of node.quasis) {
+            checkValue(node, quasi.value.raw);
+          }
+        }
+      },
+    };
+  },
+};
+
 const plugin = {
   meta: { name: "@mrskiro/oxlint-rules" },
-  rules: { "no-use-effect": noUseEffect, "no-use-ref": noUseRef },
+  rules: {
+    "no-use-effect": noUseEffect,
+    "no-use-ref": noUseRef,
+    "no-tailwind-arbitrary-value": noTailwindArbitraryValue,
+  },
 };
 
 export default plugin;
