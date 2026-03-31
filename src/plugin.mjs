@@ -44,7 +44,7 @@ const noTailwindArbitraryValue = {
         if (isVariantPattern(match[1])) continue;
         context.report({
           node,
-          message: `Tailwind arbitrary value '${match[0]}' is not allowed. Use standard utility classes instead.`,
+          message: `Tailwind arbitrary value '${match[0]}' found. Prefer a standard utility class or define a design token (e.g. CSS custom property / theme variable). If this is a one-off value, disable this rule with oxlint-disable-next-line.`,
         });
       }
     };
